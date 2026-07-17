@@ -170,7 +170,7 @@
 
     const menuInput = findFileInputByMenu(sendAsDocument);
     if (menuInput) {
-      console.log('[Antigravity MassSender] Selected input via menu wrapper');
+      console.log('[WA-Bulk Messagner] Selected input via menu wrapper');
       return menuInput;
     }
 
@@ -541,7 +541,7 @@
 
     if (isImageOrVideo) {
       try {
-        console.log('[Antigravity MassSender] Attempting paste method for image/video...');
+        console.log('[WA-Bulk Messagner] Attempting paste method for image/video...');
         chrome.runtime.sendMessage({
           type: 'addLog',
           data: { level: 'info', message: 'Attempting to send media using clipboard paste event...' }
@@ -585,7 +585,7 @@
           throw new Error('Message input not found');
         }
       } catch (e) {
-        console.warn('[Antigravity MassSender] Paste method failed, falling back to attach menu:', e);
+        console.warn('[WA-Bulk Messagner] Paste method failed, falling back to attach menu:', e);
         chrome.runtime.sendMessage({
           type: 'addLog',
           data: { level: 'warning', message: `Paste method failed (${e.message}), falling back to attach menu...` }
@@ -765,9 +765,9 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('[Antigravity MassSender] Content script loaded');
+      console.log('[WA-Bulk Messagner] Content script loaded');
     });
   } else {
-    console.log('[Antigravity MassSender] Content script loaded');
+    console.log('[WA-Bulk Messagner] Content script loaded');
   }
 })();

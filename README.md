@@ -1,4 +1,4 @@
-# Antigravity MassSender - WhatsApp Bulk Messenger
+# WA-Bulk Messagner - WhatsApp Bulk Messenger
 
 A powerful, user-friendly Chrome extension for sending bulk WhatsApp messages with media support, smart delays, and error resilience.
 
@@ -45,12 +45,12 @@ A powerful, user-friendly Chrome extension for sending bulk WhatsApp messages wi
 1. Open Chrome and navigate to `chrome://extensions/`
 2. Enable **Developer mode** (top right toggle)
 3. Click **Load unpacked**
-4. Select the `antigravity-massesender` folder
+4. Select the `wa-bulk-messagner` folder
 5. Extension icon appears in toolbar
 
 ### First Use
 1. **Open WhatsApp Web**: Go to `https://web.whatsapp.com` and scan QR code
-2. **Click Extension**: Open the Antigravity MassSender popup
+2. **Click Extension**: Open the WA-Bulk Messagner popup
 3. **Follow the Tour**: Click "Quick Tour" for a guided walkthrough
 4. **Add Contacts**: Paste numbers or load from CSV
 5. **Write Message**: Use placeholders for personalization
@@ -165,7 +165,7 @@ If browser closes or crashes, click **"Resume Session"** on next open to continu
 ## File Structure
 
 ```
-antigravity-massesender/
+wa-bulk-messagner/
 ├── manifest.json
 ├── background/
 │   └── background.js      # Service worker, queue management
