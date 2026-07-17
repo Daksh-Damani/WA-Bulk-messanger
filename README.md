@@ -85,15 +85,15 @@ A powerful, user-friendly Chrome extension for sending bulk WhatsApp messages wi
 
 ```csv
 +1234567890
-+1234567891,John Doe
-+1234567892,Jane Smith
++1234567891,Johnny bhai
++1234567892,Khiladi bhai
 ```
 
 With headers:
 ```csv
 phone,name
-+1234567890,John
-+1234567891,Jane
++1234567890,Johnny bhai
++1234567891,Khiladi bhai
 ```
 
 Supported columns: `phone`, `number`, `mobile`, `name`, `contact_name`
@@ -102,7 +102,7 @@ Supported columns: `phone`, `number`, `mobile`, `name`, `contact_name`
 
 | Placeholder | Description | Example |
 |-------------|-------------|---------|
-| `{{name}}` | Contact name | "Hello John" |
+| `{{name}}` | Contact name | "Hello Johnny bhai" |
 | `{{number}}` | Phone number | "+1234567890" |
 | `{{date}}` | Current date | "Jul 16, 2026" |
 | `{{time}}` | Current time | "2:30 PM" |

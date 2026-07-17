@@ -402,7 +402,7 @@
       if (response && response.isProcessing) {
         state.isRunning = true;
         state.isPaused = response.isPaused;
-        
+
         chrome.storage.local.get(['sessionData'], (result) => {
           if (result.sessionData) {
             const session = result.sessionData;
@@ -417,19 +417,19 @@
             state.messageTemplate = session.messageTemplate || '';
             state.mediaFiles = session.mediaFiles || [];
             state.config = { ...state.config, ...session.config };
-            
+
             if (session.queue) {
               state.phoneNumbers = session.queue.map(t => t.phoneNumber);
               elements.phoneNumbers.value = state.phoneNumbers.join('\n');
             }
-            
+
             elements.messageContent.value = state.messageTemplate;
-            
+
             updateNumberCount();
             updateMessagePreview();
             renderMediaList();
             applyConfigToUI();
-            
+
             updateUIForRunning(true);
             if (state.isPaused) {
               updateUIForPaused(true);

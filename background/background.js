@@ -151,14 +151,14 @@ async function handleSendMessage(data, tabId) {
   if (!tabId) {
     let tabs = await chrome.tabs.query({ url: '*://web.whatsapp.com/*', lastFocusedWindow: true });
     let activeTab = tabs.find(t => t.active) || tabs[0];
-    
+
     if (!activeTab) {
       const allTabs = await chrome.tabs.query({ url: '*://web.whatsapp.com/*', discarded: false });
       if (allTabs && allTabs.length > 0) {
         activeTab = allTabs.find(t => t.active) || allTabs[0];
       }
     }
-    
+
     if (activeTab) {
       tabId = activeTab.id;
     } else {
@@ -228,7 +228,6 @@ async function processQueue() {
     try {
       await verifyContentScriptActive(currentTabId);
 
-      // Get the current page load ID before navigating
       let oldPageLoadId = null;
       try {
         const oldRes = await sendMessageWithTimeout(currentTabId, { type: 'ping' }, 1000);
@@ -236,10 +235,9 @@ async function processQueue() {
           oldPageLoadId = oldRes.pageLoadId;
         }
       } catch (e) {
-        // Ignore if old page is not active or responsive
+
       }
 
-      // 1. Navigate to the contact's chat route directly from background worker (avoiding IPC channels)
       let cleanPhone = task.phoneNumber.replace(/[^0-9]/g, '');
       if (cleanPhone.startsWith('0')) {
         cleanPhone = cleanPhone.substring(1);
@@ -249,7 +247,6 @@ async function processQueue() {
       }
       await chrome.tabs.update(currentTabId, { url: `https://web.whatsapp.com/send?phone=${cleanPhone}` });
 
-      // 2. Wait up to 20 seconds for WhatsApp page load / router to resolve
       let ready = false;
       const startTime = Date.now();
       while (Date.now() - startTime < 20000) {
@@ -262,7 +259,7 @@ async function processQueue() {
             }
           }
         } catch (e) {
-          // ignore context errors while loading
+
         }
         await sleep(1000);
       }
@@ -271,7 +268,6 @@ async function processQueue() {
         throw new Error('WhatsApp Web page transition timed out.');
       }
 
-      // 3. Send message details and dispatch media to active window
       const response = await sendMessageWithTimeout(currentTabId, {
         type: 'sendMessageOnly',
         data: task

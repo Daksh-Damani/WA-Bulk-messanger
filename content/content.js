@@ -42,7 +42,7 @@
   };
 
   function findSearchBox() {
-    // 1. Try standard selectors
+
     const selectors = [
       '[data-testid="chat-list-search"]',
       'div[contenteditable="true"][data-tab="3"]',
@@ -57,20 +57,18 @@
       if (el) return el;
     }
 
-    // 2. Scan attributes
     const inputs = document.querySelectorAll('input, div[contenteditable="true"]');
     for (const input of inputs) {
       const placeholder = input.getAttribute('placeholder') || '';
       const ariaLabel = input.getAttribute('aria-label') || '';
       const title = input.getAttribute('title') || '';
-      if (placeholder.toLowerCase().includes('search') || 
-          ariaLabel.toLowerCase().includes('search') || 
+      if (placeholder.toLowerCase().includes('search') ||
+          ariaLabel.toLowerCase().includes('search') ||
           title.toLowerCase().includes('search')) {
         return input;
       }
     }
 
-    // 3. Fallback to first role="textbox"
     const textboxes = document.querySelectorAll('[role="textbox"]');
     if (textboxes.length > 0) {
       return textboxes[0];
@@ -129,7 +127,7 @@
   }
 
   function findFileInputByMenu(sendAsDocument) {
-    // 1. Define selectors for button or icon inside button
+
     const photoIcons = [
       '[data-testid="attach-image"]',
       '[aria-label="Photos & Videos"]',
@@ -153,11 +151,10 @@
       try {
         const el = document.querySelector(sel);
         if (el) {
-          // If the element itself is the input or has input inside
+
           let input = el.querySelector('input[type="file"]');
           if (input) return input;
 
-          // Traverse up to find the container (like li or list item) and find input inside
           let parent = el.closest('li, div[role="button"], [role="menuitem"]');
           if (parent) {
             input = parent.querySelector('input[type="file"]');
@@ -170,25 +167,24 @@
   }
 
   function findFileInput(sendAsDocument) {
-    // Layer 1: Find input inside the specific menu button container
+
     const menuInput = findFileInputByMenu(sendAsDocument);
     if (menuInput) {
       console.log('[Antigravity MassSender] Selected input via menu wrapper');
       return menuInput;
     }
 
-    // Layer 2: Fallback to accept attributes
     const inputs = document.querySelectorAll('input[type="file"]');
-    
+
     if (sendAsDocument) {
-      // Document input: look for accept="*" or accept that doesn't contain image
+
       for (const el of inputs) {
         const accept = el.getAttribute('accept') || '';
         if (accept === '*' || (!accept.includes('image/') && !accept.includes('video/'))) {
           return el;
         }
       }
-      // Fallback: search for input that doesn't accept image/png specifically
+
       for (const el of inputs) {
         const accept = el.getAttribute('accept') || '';
         if (!accept.includes('image/png')) {
@@ -196,14 +192,14 @@
         }
       }
     } else {
-      // Photos & Videos input: look for accept containing video/ (since it handles photos AND videos)
+
       for (const el of inputs) {
         const accept = el.getAttribute('accept') || '';
         if (accept.includes('video/')) {
           return el;
         }
       }
-      // Fallback: look for accept containing image/*
+
       for (const el of inputs) {
         const accept = el.getAttribute('accept') || '';
         if (accept.includes('image/*')) {
@@ -211,8 +207,7 @@
         }
       }
     }
-    
-    // Fallback: return the first input that is NOT a sticker input
+
     for (const el of inputs) {
       const accept = el.getAttribute('accept') || '';
       if (!accept.includes('image/png') || accept.includes('image/*')) {
@@ -220,7 +215,6 @@
       }
     }
 
-    // Ultimate fallback: first file input
     return inputs[0] || null;
   }
 
@@ -420,7 +414,7 @@
   }
 
   async function findAndActivateSearchBox() {
-    // 1. Try standard selectors first
+
     const selectors = [
       '[data-testid="chat-list-search"]',
       'div[contenteditable="true"][data-tab="3"]',
@@ -440,7 +434,6 @@
       }
     }
 
-    // 2. Try container clicking fallback
     const containerSelectors = [
       '[data-testid="chat-list-search"]',
       'button[aria-label="Search or start new chat"]',
@@ -466,7 +459,7 @@
       const chatList = document.querySelector('[data-testid="chat-list"], #pane-side, div[aria-label="Chat list"]');
       const searchBox = document.querySelector('[data-testid="chat-list-search"], div[contenteditable="true"], [role="textbox"], input');
       const loadingScreen = document.querySelector('#startup, [data-testid="startup-progress"], ._1854n');
-      
+
       if ((chatList || searchBox) && !loadingScreen) {
         return true;
       }
@@ -546,7 +539,6 @@
     const isImageOrVideo = media.type.startsWith('image/') || media.type.startsWith('video/');
     const sendAsDocument = options.sendAsDocument || !isImageOrVideo;
 
-    // Paste Method (First choice for images/videos to guarantee they are sent as photos/videos and not stickers)
     if (isImageOrVideo) {
       try {
         console.log('[Antigravity MassSender] Attempting paste method for image/video...');
@@ -601,7 +593,6 @@
       }
     }
 
-    // Log the file inputs found on the page for debugging
     try {
       const inputs = document.querySelectorAll('input[type="file"]');
       const inputsInfo = Array.from(inputs).map(i => `accept="${i.getAttribute('accept') || ''}"`).join(' | ');
@@ -705,7 +696,6 @@
         throw new Error('WhatsApp Web page is loading or not ready.');
       }
 
-      // Wait up to 10 seconds for the chat message input box to load or an error to occur
       let messageInput = null;
       const waitStartTime = Date.now();
       while (Date.now() - waitStartTime < 10000) {
