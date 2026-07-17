@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity MassSender</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.004 2C6.51 2 2.014 6.5 2.014 12c0 1.84.5 3.56 1.39 5.07L2 22l5.12-1.35c1.44.79 3.09 1.24 4.88 1.24 5.5 0 10-4.5 10-10S17.5 2 12.004 2zm5.71 12.3c-.24-.12-1.45-.71-1.68-.8-.23-.08-.4-.12-.56.12-.17.24-.65.81-.8 1-.15.17-.3.19-.54.07-1.6-.8-2.6-1.5-3.6-3.2-.23-.4.23-.37.66-1.22.13-.26.07-.49-.03-.69-.1-.2-.88-2.13-1.2-2.91-.32-.78-.65-.68-.89-.69-.23-.01-.49-.01-.75-.01-.26 0-.69.1-1.05.49-.36.39-1.39 1.36-1.39 3.3s1.42 3.83 1.62 4.1c.2.27 2.8 4.28 6.78 6a22.4 22.4 0 0 0 2.27.84c1 .31 1.9.27 2.62.16.8-.12 2.45-1 2.8-1.97.35-.97.35-1.81.24-1.97-.1-.17-.3-.27-.54-.39z"/>
+        </svg>
+        <span class="title">Antigravity MassSender</span>
+      </div>
+      <div class="header-links">
+        <a href="https://github.com/Daksh-Damani" target="_blank" class="github-link" aria-label="GitHub - Daksh-Damani">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.305-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <span>Daksh-Damani</span>
+        </a>
+        <span class="version">v1.0.0</span>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="main" role="tab" aria-selected="true">Main</button>
+      <button class="tab-btn" data-tab="settings" role="tab" aria-selected="false">Settings</button>
+      <button class="tab-btn" data-tab="logs" role="tab" aria-selected="false">Logs</button>
+    </div>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="main-tab" role="tabpanel">
+        <div id="welcomeScreen" class="welcome-screen">
+          <div class="welcome-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.004 2C6.51 2 2.014 6.5 2.014 12c0 1.84.5 3.56 1.39 5.07L2 22l5.12-1.35c1.44.79 3.09 1.24 4.88 1.24 5.5 0 10-4.5 10-10S17.5 2 12.004 2zm5.71 12.3c-.24-.12-1.45-.71-1.68-.8-.23-.08-.4-.12-.56.12-.17.24-.65.81-.8 1-.15.17-.3.19-.54.07-1.6-.8-2.6-1.5-3.6-3.2-.23-.4.23-.37.66-1.22.13-.26.07-.49-.03-.69-.1-.2-.88-2.13-1.2-2.91-.32-.78-.65-.68-.89-.69-.23-.01-.49-.01-.75-.01-.26 0-.69.1-1.05.49-.36.39-1.39 1.36-1.39 3.3s1.42 3.83 1.62 4.1c.2.27 2.8 4.28 6.78 6a22.4 22.4 0 0 0 2.27.84c1 .31 1.9.27 2.62.16.8-.12 2.45-1 2.8-1.97.35-.97.35-1.81.24-1.97-.1-.17-.3-.27-.54-.39z"/>
+            </svg>
+          </div>
+          <h2>Welcome to MassSender</h2>
+          <p>Send personalized WhatsApp messages to thousands of contacts with media attachments, smart delays, and error resilience.</p>
+          <div class="welcome-steps">
+            <div class="welcome-step">
+              <span class="step-number">1</span>
+              <span class="step-text"><strong>Add contacts</strong> - Paste numbers or load CSV</span>
+            </div>
+            <div class="welcome-step">
+              <span class="step-number">2</span>
+              <span class="step-text"><strong>Write message</strong> - Use {{name}}, {{number}}, {{date}}, {{time}}</span>
+            </div>
+            <div class="welcome-step">
+              <span class="step-number">3</span>
+              <span class="step-text"><strong>Add media</strong> - Optional images, videos, documents</span>
+            </div>
+            <div class="welcome-step">
+              <span class="step-number">4</span>
+              <span class="step-text"><strong>Configure delays</strong> - Set safe sending intervals</span>
+            </div>
+            <div class="welcome-step">
+              <span class="step-number">5</span>
+              <span class="step-text"><strong>Validate & Start</strong> - Verify numbers and begin sending</span>
+            </div>
+          </div>
+          <div class="welcome-actions">
+            <button id="welcomeStart" class="btn btn-primary btn-large">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Get Started
+            </button>
+            <button id="welcomeTour" class="btn btn-secondary">Quick Tour</button>
+          </div>
+          <input type="file" id="welcomeCsvFile" accept=".csv,.txt" style="display: none;">
+        </div>
+
+        <div id="mainContent" style="display: none;">
+          <div class="section">
+            <h3>Phone Numbers <span class="count" id="numbersCount">0 numbers</span></h3>
+            <textarea id="phoneNumbers" placeholder="Enter phone numbers (one per line or comma-separated)
+Examples:
++1234567890
++1234567891, John Doe
++1-234-567-890
++91 98765 43210, Jane" rows="6" aria-label="Phone numbers"></textarea>
+            <div class="input-hint">Enter one number per line or comma-separated. Include country code (e.g., +1, +91, +44). Add names after comma for personalization.</div>
+            <div class="input-actions">
+              <button id="loadCsvBtn" class="btn btn-secondary" aria-label="Load numbers from CSV file">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                Load from File
+              </button>
+              <input type="file" id="csvFile" accept=".csv,.txt" style="display: none;">
+              <button id="clearNumbersBtn" class="btn btn-secondary" aria-label="Clear all numbers">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                Clear
+              </button>
+              <span id="validCount" class="count">0 valid</span>
+              <span id="invalidCount" class="count">0 invalid</span>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Message Content</h3>
+            <textarea id="messageContent" placeholder="Enter your message...
+Use placeholders for personalization:
+{{name}} - Contact name (if provided)
+{{number}} - Phone number
+{{date}} - Current date
+{{time}} - Current time
+
+Example: Hello {{name}}, welcome to our service!" rows="5" aria-label="Message template"></textarea>
+            <div class="input-actions">
+              <button id="loadMessageBtn" class="btn btn-secondary" aria-label="Load message template">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Load Template
+              </button>
+              <button id="clearMessageBtn" class="btn btn-secondary" aria-label="Clear message">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                Clear
+              </button>
+              <button id="previewMessageBtn" class="btn btn-secondary" aria-label="Preview message">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                Preview
+              </button>
+              <span id="messageCharCount" class="count-char">0 characters</span>
+            </div>
+            <div class="repetition-control">
+              <label>
+                <input type="number" id="repetitionCount" value="1" min="1" max="100" aria-label="Repeat message per contact">
+                <span>Repeat message per contact</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Media Attachments</h3>
+            <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Drop zone for media files">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <p>Drag & drop media files here</p>
+              <p class="drop-hint">or click to browse</p>
+              <input type="file" id="mediaInput" multiple accept="image/*,video/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Select media files">
+            </div>
+            <div class="media-list" id="mediaList" role="list" aria-label="Attached media files"></div>
+            <div class="media-info" id="mediaInfo">No files selected. Max 10 files, 16MB each.</div>
+          </div>
+
+          <div class="section">
+            <h3>Delay Settings</h3>
+            <div class="delay-controls">
+              <div class="delay-group">
+                <label for="minDelay">Min Delay (ms)</label>
+                <input type="number" id="minDelay" value="3000" min="1000" max="60000" step="500" aria-label="Minimum delay between messages">
+              </div>
+              <div class="delay-group">
+                <label for="maxDelay">Max Delay (ms)</label>
+                <input type="number" id="maxDelay" value="8000" min="1000" max="120000" step="500" aria-label="Maximum delay between messages">
+              </div>
+              <div class="delay-group">
+                <label for="batchSize">Batch Size</label>
+                <input type="number" id="batchSize" value="10" min="1" max="100" aria-label="Messages per batch">
+              </div>
+              <div class="delay-group">
+                <label for="batchDelay">Batch Delay (ms)</label>
+                <input type="number" id="batchDelay" value="30000" min="5000" max="300000" step="5000" aria-label="Delay between batches">
+              </div>
+            </div>
+            <div class="delay-presets">
+              <button class="btn btn-preset" data-preset="fast" aria-label="Fast preset: 1-3 seconds">Fast (1-3s)</button>
+              <button class="btn btn-preset" data-preset="normal" aria-label="Normal preset: 3-8 seconds">Normal (3-8s)</button>
+              <button class="btn btn-preset" data-preset="safe" aria-label="Safe preset: 5-15 seconds">Safe (5-15s)</button>
+              <button class="btn btn-preset" data-preset="stealth" aria-label="Stealth preset: 10-30 seconds">Stealth (10-30s)</button>
+            </div>
+            <div class="input-hint" style="margin-top: 10px;">Delays are randomized between min/max to mimic human behavior. Use Safe or Stealth for higher volumes.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="settings-tab" role="tabpanel">
+        <div class="section">
+          <h3>Sending Behavior</h3>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="skipFailed" checked>
+              <span>Continue on failure (skip failed numbers)</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="autoCloseChat" checked>
+              <span>Auto-close chat after sending</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="randomizeOrder" checked>
+              <span>Randomize contact order</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="humanTyping" checked>
+              <span>Simulate human typing</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="avoidRateLimit" checked>
+              <span>Respect WhatsApp rate limits (recommended)</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="pauseOnError" checked>
+              <span>Pause on consecutive errors (3+)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Media Settings</h3>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="sendMediaFirst" checked>
+              <span>Send media before text message</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="compressMedia">
+              <span>Auto-compress large media (>16MB)</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="sendAsDocument" checked>
+              <span>Send as document (preserves quality)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Browser & Session</h3>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="keepAlive" checked>
+              <span>Keep browser awake during sending</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="autoCloseOnComplete" checked>
+              <span>Auto-close extension on completion</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <input type="checkbox" id="saveSession" checked>
+              <span>Save session for resume</span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label>
+              <span>Custom User Agent:</span>
+              <input type="text" id="userAgent" placeholder="Leave empty for default" aria-label="Custom user agent string">
+            </label>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Data Management</h3>
+          <div class="data-actions">
+            <button id="saveConfigBtn" class="btn btn-secondary">Save Configuration</button>
+            <button id="loadConfigBtn" class="btn btn-secondary">Load Configuration</button>
+            <input type="file" id="loadConfigInput" accept=".json" style="display: none;">
+            <button id="exportLogBtn" class="btn btn-secondary">Export Logs</button>
+            <button id="exportCsvBtn" class="btn btn-secondary">Export Results CSV</button>
+            <button id="clearAllBtn" class="btn btn-danger">Clear All Data</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane" id="logs-tab" role="tabpanel">
+        <div class="log-header">
+          <h3>Activity Log</h3>
+          <div class="log-controls">
+            <select id="logFilter" aria-label="Filter logs by level">
+              <option value="all">All</option>
+              <option value="success">Success</option>
+              <option value="error">Errors</option>
+              <option value="warning">Warnings</option>
+              <option value="info">Info</option>
+            </select>
+            <button id="clearLogsBtn" class="btn btn-secondary btn-small">Clear</button>
+          </div>
+        </div>
+        <div class="log-container" id="logContainer" role="log" aria-live="polite" aria-label="Activity logs"></div>
+      </div>
+    </div>
+
+    <div class="progress-section" id="progressSection" style="display: none;" role="status" aria-live="polite">
+      <div class="progress-header">
+        <span class="progress-title">Sending Progress</span>
+        <span class="progress-stats" id="progressStats">0 / 0 sent</span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="progress-details">
+        <span id="sentCount" class="stat success">Sent: 0</span>
+        <span id="failedCount" class="stat error">Failed: 0</span>
+        <span id="pendingCount" class="stat pending">Pending: 0</span>
+        <span id="currentNumber" class="stat current">Current: -</span>
+      </div>
+    </div>
+
+    <div class="action-bar">
+      <button id="validateBtnMain" class="btn btn-secondary">Validate Numbers</button>
+      <button id="startBtn" class="btn btn-primary btn-large">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Start Sending
+      </button>
+      <button id="pauseBtn" class="btn btn-warning btn-large" style="display: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        Pause
+      </button>
+      <button id="resumeBtn" class="btn btn-primary btn-large" style="display: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Resume
+      </button>
+      <button id="stopBtn" class="btn btn-danger btn-large" style="display: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+        Stop
+      </button>
+    </div>
+
+    <div class="status-bar">
+      <span class="status-indicator ready" id="statusIndicator"></span>
+      <span id="statusText">Ready to send</span>
+    </div>
+  </div>
+
+  <div class="preview-modal" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+    <div class="preview-content">
+      <div class="preview-header">
+        <h3 id="previewTitle">Message Preview</h3>
+        <button class="preview-close" id="closePreview" aria-label="Close preview">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="preview-message">
+        <div class="preview-header-text" id="previewHeader">Preview for: +1234567890</div>
+        <div class="preview-body" id="previewBody"></div>
+        <div class="preview-media" id="previewMedia"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
